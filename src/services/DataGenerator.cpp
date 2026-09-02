@@ -1,4 +1,4 @@
-#include "../include/DataGenerator.hpp"
+#include "../../include/services/DataGenerator.hpp"
 
 DataGenerator::DataGenerator() : size(0), array(nullptr) {}
 
@@ -22,7 +22,7 @@ void DataGenerator::generate(int size) {
     std::thread t1([this, mid]() {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<int> distrib(1, 10000);
+        std::uniform_int_distribution<int> distrib(1, size);
 
         for (int i = 0; i < mid; i++) {
             this->array[i] = distrib(gen);
@@ -32,7 +32,7 @@ void DataGenerator::generate(int size) {
     std::thread t2([this, mid, size]() {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<int> distrib(1, 10000);
+        std::uniform_int_distribution<int> distrib(1, size);
 
         for (int i = mid; i < size; i++) {
             this->array[i] = distrib(gen);
