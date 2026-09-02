@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "../include/Terminal.hpp"
+#include "../../include/ui/Terminal.hpp"
 
 void TerminalInterface::printHeader(const std::string& titulo) const {
     std::cout << "\n========================================\n";
