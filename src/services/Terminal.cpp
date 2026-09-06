@@ -36,37 +36,3 @@ void TerminalInterface::showData(const int dados[], size_t tamanho) const {
     
     printArray(dados, tamanho);
 }
-
-void TerminalInterface::applyInsertionSort(const int dados[], size_t tamanho) const {
-    printHeader("EXECUTANDO INSERTION SORT");
-
-    if (tamanho == 0) {
-        std::cout << "Nenhum dado para ordenar.\n";
-        return;
-    }
-
-    int copia[tamanho];
-    for (size_t i = 0; i < tamanho; ++i) {
-        copia[i] = dados[i];
-    }
-
-    std::cout << "Resultado ordenado:\n";
-    printArray(copia, tamanho);
-}
-
-void TerminalInterface::applySelectionSort(const int dados[], size_t tamanho) const {
-    printHeader("EXECUTANDO SELECTION SORT");
-
-    if (tamanho == 0) {
-        std::cout << "Nenhum dado para ordenar.\n";
-        return;
-    }
-
-    int copia[tamanho];
-    for (size_t i = 0; i < tamanho; ++i) {
-        copia[i] = dados[i];
-    }
-
-    std::cout << "Resultado ordenado:\n";
-    printArray(copia, tamanho);
-}

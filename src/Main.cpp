@@ -6,7 +6,6 @@
 
 int main () {
 
-    Statistics stats;
     TerminalInterface terminal;
     DataGenerator data;
 
