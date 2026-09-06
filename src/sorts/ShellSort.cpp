@@ -1,4 +1,3 @@
-#include "ShellSort.hpp"
 #include "../../include/sorts/ShellSort.hpp"
 
 void ShellSort::sort(int* arr, int size) {
@@ -6,9 +5,6 @@ void ShellSort::sort(int* arr, int size) {
         for (int i = gap; i < size; i++) {
             int aux = arr[i];
             int j = i;
-            while (j >= gap && arr[j - gap] > aux) {
-                arr[j] = arr[j - gap];
-                j -= gap;
             while (j >= gap) {
                 stats.incrementComparison();
                 if (arr[j - gap] > aux) {

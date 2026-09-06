@@ -51,3 +51,4 @@ void Statistics::incrementSwap() {
 void Statistics::incrementComparison() {
     this->nComparisons++;
 }
+
