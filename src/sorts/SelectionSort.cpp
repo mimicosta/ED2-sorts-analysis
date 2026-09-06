@@ -13,3 +13,5 @@ void SelectionSort::sort(int* arr, int size) {
         arr[minIdx] = aux;
     }
 }
+
+// test
