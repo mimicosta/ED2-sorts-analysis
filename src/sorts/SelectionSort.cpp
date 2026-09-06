@@ -14,4 +14,3 @@ void SelectionSort::sort(int* arr, int size) {
     }
 }
 
-// test
