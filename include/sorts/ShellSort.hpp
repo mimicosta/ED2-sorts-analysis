@@ -2,13 +2,13 @@
 #include "Sort.hpp"
 #include <string>
 
-class SelectionSort : public Sort {
+class ShellSort : public Sort {
 public:
-    SelectionSort() = default;
-    ~SelectionSort() override = default;
+    ShellSort() = default;
+    ~ShellSort() override = default;
 
     std::string getName() const override {
-        return "Selection Sort";
+        return "Shell Sort";
     }
 
     void sort(int* arr, int size) override;

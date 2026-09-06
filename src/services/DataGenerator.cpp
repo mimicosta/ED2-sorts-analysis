@@ -19,7 +19,7 @@ void DataGenerator::generate(int size) {
 
     int mid = size / 2;
 
-    std::thread t1([this, mid]() {
+    std::thread t1([this, mid, size]() {
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<int> distrib(1, size);
