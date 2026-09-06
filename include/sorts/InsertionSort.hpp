@@ -1,10 +1,7 @@
 #pragma once
-
 #include "Sort.hpp"
 #include <string>
 
-class InsertionSort : public Sort
-{
 class InsertionSort : public Sort {
 public:
     InsertionSort() = default;
