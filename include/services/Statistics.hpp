@@ -14,26 +14,9 @@ public:
     void incrementComparison();
     void incrementSwap();
 
-    public:
-        Statistics();
-        int timeElapsed();
-        void startTimer();
-        void endTimer();
-        int getNComparisons();
-        int getNSwaps();
-        void incrementComparison();
-        void incrementSwap();
-
-    private:
-        int nComparisons;
-        int nSwaps;
-        std::chrono::high_resolution_clock::timepoint startTime;
-        std::chrono::high_resolution_clock::timepoint endTime;
-
 private:
     unsigned long long nComparisons;
     unsigned long long nSwaps;
     std::chrono::high_resolution_clock::time_point startTime;
     std::chrono::high_resolution_clock::time_point endTime;
-};
 };

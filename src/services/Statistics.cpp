@@ -1,7 +1,6 @@
 #include "../include/Statistics.hpp"
 #include "../../include/services/Statistics.hpp"
 
-Statistics::Statistics(){
 Statistics::Statistics() {
     reset();
 }
@@ -14,17 +13,14 @@ void Statistics::reset() {
     this->endTime = this->startTime;
 }
 
-void Statistics::startTimer(){
 void Statistics::startTimer() {
     this->startTime = std::chrono::high_resolution_clock::now();
 }
 
-void Statistics::endTimer(){
 void Statistics::endTimer() {
     this->endTime = std::chrono::high_resolution_clock::now();
 }
 
-int Statistics::timeElapsed(){
 double Statistics::timeElapsed() const {
     std::chrono::duration<double, std::milli> duration = this->endTime - this->startTime;
     duration /= 1000;
