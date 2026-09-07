@@ -1,5 +1,4 @@
-#include "SelectionSort.hpp"
-#include "../../include/sorts/SelectionSort.hpp"
+#include "sorts/SelectionSort.hpp"
 
 void SelectionSort::sort(int* arr, int size) {
     for (int i = 0; i < size - 1; i++) {

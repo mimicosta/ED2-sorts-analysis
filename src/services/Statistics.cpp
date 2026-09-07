@@ -1,4 +1,4 @@
-#include "../../include/services/Statistics.hpp"
+#include "services/Statistics.hpp"
 
 Statistics::Statistics() {
     reset();
@@ -39,4 +39,3 @@ void Statistics::incrementSwap() {
 void Statistics::incrementComparison() {
     this->nComparisons++;
 }
-

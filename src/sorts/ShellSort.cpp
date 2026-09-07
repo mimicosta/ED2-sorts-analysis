@@ -1,4 +1,4 @@
-#include "../../include/sorts/ShellSort.hpp"
+#include "sorts/ShellSort.hpp"
 
 void ShellSort::sort(int* arr, int size) {
     for (int gap = size / 2; gap > 0; gap /= 2) {

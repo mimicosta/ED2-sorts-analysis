@@ -1,4 +1,4 @@
-#include "../../include/sorts/QuickSort.hpp"
+#include "sorts/QuickSort.hpp"
 
 void QuickSort::quickSort(int* arr, int low, int high) {
     int i = low;
