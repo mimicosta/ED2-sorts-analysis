@@ -1,5 +1,22 @@
 # ED2 Sort Analysis
 
+# Como rodar:
+
+Para compilar:
+```bash
+make all
+```
+Para rodar:
+```bash
+make run
+```
+Para limpar arquivos compilados:
+```bash
+make clean
+```
+
+
+
 ## Trabalho de ED2:
 
 Uma empresa necessita processar conjuntos de dados numéricos provenientes de 
