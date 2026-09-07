@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include "InsertionSort.hpp"
-#include "SelectionSort.hpp"
-#include "ShellSort.hpp"
-#include "QuickSort.hpp"
+#include "sorts/InsertionSort.hpp"
+#include "sorts/SelectionSort.hpp"
+#include "sorts/ShellSort.hpp"
+#include "sorts/QuickSort.hpp"
 
-#include "DataGenerator.hpp"
-#include "Console.hpp"
+#include "services/DataGenerator.hpp"
+#include "services/Console.hpp"
 
 constexpr int MAX_SIZE = 100000;
 
