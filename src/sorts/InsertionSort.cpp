@@ -1,4 +1,4 @@
-#include "../../include/sorts/InsertionSort.hpp"
+#include "sorts/InsertionSort.hpp"
 
 void InsertionSort::sort(int* arr, int size) {
     for (int i = 1; i < size; i++) {
