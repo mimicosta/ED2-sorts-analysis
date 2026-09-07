@@ -22,9 +22,12 @@ namespace Console {
         return size;
     }
 
+    inline void showScenarioHeader(const std::string& scenarioName) {
+        std::cout << "\n>>> Cenario: " << scenarioName << " <<<\n";
+    }
+
     inline void showTableHeader() {
-        std::cout << "\n"
-                  << std::left  << std::setw(20) << "Algoritmo"
+        std::cout << std::left  << std::setw(20) << "Algoritmo"
                   << std::right << std::setw(16) << "Comparacoes"
                   << std::right << std::setw(18) << "Movimentacoes"
                   << std::right << std::setw(20) << "Tempo de exec. (ms)" << "\n";
@@ -40,6 +43,6 @@ namespace Console {
     }
 
     inline void showTableFooter() {
-        std::cout << std::string(74, '-') << "\n\n";
+        std::cout << std::string(74, '-') << "\n";
     }
 }

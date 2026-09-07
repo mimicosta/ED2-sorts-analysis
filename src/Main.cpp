@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "sorts/InsertionSort.hpp"
 #include "sorts/SelectionSort.hpp"
@@ -9,21 +10,21 @@
 #include "services/Console.hpp"
 
 constexpr int MAX_SIZE = 100000;
+struct Scenario {
+    std::string name;
+    void (DataGenerator::*generatorFunc)(int);
+};
 
 int main() {
     Console::showHeader();
 
     int size = Console::promptArraySize();
     if (size > MAX_SIZE) {
-        std::cout << "Aviso: Tamanho limitado ao maximo permitido na pilha (" << MAX_SIZE << ").\n";
+        std::cout << "Aviso: Tamanho limitado ao maximo permitido (" << MAX_SIZE << ").\n";
         size = MAX_SIZE;
     }
 
     DataGenerator generator;
-    generator.generate(size);
-    int* originalData = generator.getArray();
-
-    int workingArray[MAX_SIZE];
 
     InsertionSort insertion;
     SelectionSort selection;
@@ -37,25 +38,40 @@ int main() {
         &quick
     };
 
-    Console::showTableHeader();
+    Scenario scenarios[] = {
+        {"Aleatorio",             &DataGenerator::generateRandom},
+        {"Ordenado",              &DataGenerator::generateSorted},
+        {"Invertido",             &DataGenerator::generateReverseSorted},
+        {"Parcialmente Ordenado", &DataGenerator::generatePartiallySorted}
+    };
 
-    for (Sort* algo : algorithms) {
-        for (int i = 0; i < size; i++) {
-            workingArray[i] = originalData[i];
+    int workingArray[MAX_SIZE];
+
+    for (const auto& scenario : scenarios) {
+        (generator.*(scenario.generatorFunc))(size);
+        int* originalData = generator.getArray();
+
+        Console::showScenarioHeader(scenario.name);
+        Console::showTableHeader();
+
+        for (Sort* algo : algorithms) {
+            for (int i = 0; i < size; i++) {
+                workingArray[i] = originalData[i];
+            }
+
+            algo->run(workingArray, size);
+
+            Statistics stats = algo->getStats();
+            Console::showTableRow(
+                algo->getName(),
+                stats.getNComparisons(),
+                stats.getNSwaps(),
+                stats.timeElapsed()
+            );
         }
-        algo->run(workingArray, size);
 
-
-        Statistics stats = algo->getStats();
-        Console::showTableRow(
-            algo->getName(),
-            stats.getNComparisons(),
-            stats.getNSwaps(),
-            stats.timeElapsed()
-        );
+        Console::showTableFooter();
     }
-
-    Console::showTableFooter();
 
     return 0;
 }
