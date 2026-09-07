@@ -10,9 +10,12 @@
 #include "services/Console.hpp"
 
 constexpr int MAX_SIZE = 100000;
+
+typedef void (DataGenerator::*GeneratorMethod)(int);
+
 struct Scenario {
     std::string name;
-    void (DataGenerator::*generatorFunc)(int);
+    GeneratorMethod generatorFunc;
 };
 
 int main() {
@@ -31,14 +34,14 @@ int main() {
     ShellSort     shell;
     QuickSort     quick;
 
-    Sort* algorithms[] = {
+    Sort* algorithms[4] = {
         &selection,
         &insertion,
         &shell,
         &quick
     };
 
-    Scenario scenarios[] = {
+    Scenario scenarios[4] = {
         {"Aleatorio",             &DataGenerator::generateRandom},
         {"Ordenado",              &DataGenerator::generateSorted},
         {"Invertido",             &DataGenerator::generateReverseSorted},
@@ -47,14 +50,20 @@ int main() {
 
     int workingArray[MAX_SIZE];
 
-    for (const auto& scenario : scenarios) {
-        (generator.*(scenario.generatorFunc))(size);
+    for (int s = 0; s < 4; s++) {
+        Scenario currentScenario = scenarios[s];
+        
+        GeneratorMethod method = currentScenario.generatorFunc;
+        (generator.*method)(size);
+        
         int* originalData = generator.getArray();
 
-        Console::showScenarioHeader(scenario.name);
+        Console::showScenarioHeader(currentScenario.name);
         Console::showTableHeader();
 
-        for (Sort* algo : algorithms) {
+        for (int a = 0; a < 4; a++) {
+            Sort* algo = algorithms[a];
+
             for (int i = 0; i < size; i++) {
                 workingArray[i] = originalData[i];
             }
