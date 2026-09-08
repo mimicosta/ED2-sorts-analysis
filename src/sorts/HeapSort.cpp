@@ -5,34 +5,50 @@ void HeapSort::heapify(int* arr, int n, int i) {
     int largest = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
+    int aux;
 
-    if((l < n) && arr[l] > arr[largest]){
+    if((l < n)){   
         stats.incrementComparison();
-        largest = l;
-        stats.incrementSwap();
-    } 
-    if((r < n) && arr[r] > arr[largest]){
+        if (arr[l] > arr[largest]) {
+            largest = l;
+        }
+    }
+
+    if((r < n)){
         stats.incrementComparison();
-        largest = r;
-        stats.incrementSwap();
-    } 
+        if(arr[r] > arr[largest]) {
+            largest = r;
+        }
+    }
 
     if(largest != i){
-        stats.incrementComparison();
-        int aux = arr[i];
+        aux = arr[i];
         arr[i] = arr[largest];
-        stats.incrementSwap();
         arr[largest] = aux;
-        stats.incrementSwap(); //swaps the new largest and root
+        stats.incrementSwap();
 
         heapify(arr, n, largest); //goes to the subtree
     }
 }
 
 void HeapSort::heapSort(int* arr, int n) {
-    
+    int aux;
+    for (int i = n/2-1; i >= 0; i--){
+        heapify(arr, n, i);
+    }
+
+    for(int i = n-1; i > 0; i--){
+        aux = arr[0];
+        arr[0] = arr[i];
+        arr[i] = aux;
+        stats.incrementSwap();
+
+        heapify(arr, i, 0);
+    }
 }
 
 void HeapSort::sort(int* arr, int size) {
-    heapSort(arr, size);
+    if (arr != nullptr && size > 1) {
+        heapSort(arr, size);
+    }
 }
