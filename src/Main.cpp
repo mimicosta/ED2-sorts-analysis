@@ -5,7 +5,7 @@
 #include "sorts/SelectionSort.hpp"
 #include "sorts/ShellSort.hpp"
 #include "sorts/QuickSort.hpp"
-
+#include "sorts/HeapSort.hpp"
 #include "services/DataGenerator.hpp"
 #include "services/Console.hpp"
 
@@ -33,12 +33,14 @@ int main() {
     SelectionSort selection;
     ShellSort     shell;
     QuickSort     quick;
+    HeapSort      heap;
 
-    Sort* algorithms[4] = {
+    Sort* algorithms[5] = {
         &selection,
         &insertion,
         &shell,
-        &quick
+        &quick,
+        &heap
     };
 
     Scenario scenarios[4] = {
@@ -61,7 +63,7 @@ int main() {
         Console::showScenarioHeader(currentScenario.name);
         Console::showTableHeader();
 
-        for (int a = 0; a < 4; a++) {
+        for (int a = 0; a < 5; a++) {
             Sort* algo = algorithms[a];
 
             for (int i = 0; i < size; i++) {
