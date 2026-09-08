@@ -1,4 +1,5 @@
 # ED2 Sort Analysis
+## Felipe Tinel, Enzo Schubach e Mirella Maria
 
 # Como rodar:
 
