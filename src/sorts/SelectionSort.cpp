@@ -9,9 +9,6 @@ void SelectionSort::sort(int* arr, int size) {
                 minIdx = j;
             }
         }
-        int aux = arr[i];
-        arr[i] = arr[minIdx];
-        arr[minIdx] = aux;
         if (minIdx != i) {
             int aux = arr[i];
             arr[i] = arr[minIdx];
